@@ -1,0 +1,57 @@
+.customer{
+    width: 100%;
+    padding: 2rem;
+}
+.customer .customer_body{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: center;
+    gap: .5rem;
+    padding: 2rem;
+}
+.customer .customer_body .image{
+    width: 15rem;
+    margin: 3rem;
+    margin-left: 55%;
+}
+.customer .customer_body .image img{
+    width: 15rem;
+    height: 15rem;
+}
+.customer .customer_body .comments{
+    width: 15rem;
+    margin: 3rem;
+    margin-left: 0;
+    padding: 1rem;
+}
+.customer .customer_body .comments .name{
+    margin-top: 30%;
+    font-size: 0.9rem;
+    font-family: "Roboto";
+    color: #9e9e9e;
+}
+.customer .customer_body .comments .name h3{
+    color: var(--primary-color);
+    line-height: 0.3;
+}
+.customer .customer_body .comments .comment{
+    margin-top: 20%;
+    color: #9e9e9e;
+    font-weight: 400;
+    font-size: 1rem;
+    font-style: italic;
+} 
+@media screen  and (max-width: 600px){
+    .customer .customer_body{
+        grid-template-columns: 1fr;
+        gap: .4rem
+    }
+    .customer .customer_body .image{
+        margin-left: 15%;
+        margin-bottom: 0;
+    }
+    .customer .customer_body .comments{
+        margin-left: 20%;
+        margin-top: 0;
+    }
+}

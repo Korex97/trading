@@ -1,0 +1,176 @@
+.dash-section{
+    width: 100%;
+}
+.cards-section{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    justify-content: space-between;
+}
+.money-card{
+    box-sizing: border-box;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    box-shadow: 0 2px 1px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 1.3rem 2rem;
+    border-radius: 0.2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+.card-head{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+    background: initial;
+    outline: none !important;
+}
+.money-card span{
+    color: black;
+    margin: .5rem;
+}
+.money-card .btn{
+    width: auto;
+    border-radius: .5rem;
+    color: #ffffff;
+    background-color: var(--color-bg);
+}
+.balance span{
+    font-size: 1.2rem;
+}
+.package .name{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+}
+.package .name div{
+    font-size: 1rem;
+    color: #000000;
+}
+.package .name .btn{
+    width: auto;
+    height: fit-content;
+    color: #ffffff;
+}
+.results div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-weight: 400;
+}
+.money-card.trades{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    margin-left: 1.2rem;
+    margin-right: 1.2rem;
+}
+.trades h4{
+    font-size: 1.3rem;
+    color: var(--primary);
+    text-align: center;
+}
+.trades .trade{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.trade h4{
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--gray-dark);
+}
+.trade .currency{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-content: center;
+    justify-content: center;
+    margin: 0;
+}
+.trade .currency .action{
+    font-size: 1rem;
+    margin: 0;
+
+}
+.trade .currency .action .action-buy{
+    color: var(--blue);
+}
+.trade .currency .action .action-sell{
+    color: var(--red);
+}
+.trade .currency .position{
+    color: var(--gray);
+    font-size: 12px;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.trade .profit{
+    font-size: 1rem;
+    color: var(--success);
+}
+.arrow{
+    margin: 10%;
+}
+.referral{
+    margin: 0 15%;
+}
+.referral .trades{
+    gap: 1.5rem;
+    border-radius: 1.5rem;
+}
+.trades .user-list{
+    margin-left: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    gap: 1rem;
+    align-items: center;
+}
+.referral .trades .active{
+    background-color: var(--green);
+    width: .7rem;
+    height: .7rem;
+    border-radius: 50%;
+    outline: var(--green) !important;
+}
+.referral .trades .inactive{
+    background-color: var(--gray);
+    width: .7rem;
+    height: .7rem;
+    border-radius: 50%;
+    outline: var(--gray) !important;
+}
+
+.user{
+    font-size: 1rem;
+}
+
+/* Media Query for Medium Devices */
+@media screen and (max-width: 1024px) {
+    
+}
+
+
+/* Media Query for small Devics */
+@media screen and (max-width: 600px) {
+    .cards-section{
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        margin: 0;
+    }
+    .referral{
+        margin: 0 6%;
+    }
+    .trades .user-list{
+        margin-left: .5rem;
+    }
+}

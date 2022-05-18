@@ -1,0 +1,74 @@
+.packages{
+    width: 100%;
+    padding: 1.5rem;
+}
+.price_cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem;
+    padding: 2rem 4rem;
+}
+.price_cards .card{
+    box-sizing: border-box;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    padding: 1.3rem 2rem;
+    border-radius: 0.7rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+.price_cards .card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.price_cards .card .card_head{
+    display: flex;
+    justify-content: center;
+    width: 25%;
+    background-color: #80D8FF;
+    border-radius: 3rem 4rem 4rem 0;
+}
+.price_cards .card .card_head h3{
+    margin: .4rem 1rem;
+}
+.card_price{
+    font-size: 2rem;
+    font-weight: 400;
+}
+.duration{
+    color: #757575;
+}
+hr{
+    color: #757575;
+}
+.features{
+    color: #6200ee;
+}
+.features div{
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+}
+.card_btn{
+    width: 100%;
+    background-color: #3700b3;
+    color: #ffffff;
+    font-size: 1.2rem;
+    border: 1px solid #3700b3;
+    border-radius: .4rem;
+    padding: .5rem;
+    cursor: pointer;
+}
+.card_btn:hover{
+    box-shadow: 0 0 1px 0 #3700b3;
+}
+@media screen  and (max-width: 600px){
+    .price_cards{
+        grid-template-columns: 1fr;
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
+}

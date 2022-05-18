@@ -1,0 +1,60 @@
+#package{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+#package h4{
+    font-weight: 400;
+    font-size: 1.3rem;
+    margin-left: .5rem;
+}
+#package .money-card.package{
+    min-width: 45%;
+    max-width: 45%;
+}
+#package .money-card:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+} 
+#package .money-card h4{
+    margin-left: 0;
+    font-size: 1.2rem;
+}
+#package .packages .money-card .card-head{
+    display: flex;
+    justify-content: center;
+    width: 25%;
+    background-color: #80D8FF;
+    border-radius: 3rem 4rem 4rem 0;
+}
+#package .packages .money-card{
+    cursor: pointer;
+}
+#package .packages .money-card .features .card_btn{
+    cursor: pointer;
+}
+#package .packages{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+}
+
+@media screen and (max-width: 1024px) {
+    #package .money-card.package{
+        min-width: 70%;
+        max-width: 100%;
+    }
+    #package .packages{
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #package .money-card.money-card.package{
+        min-width: 100%;
+        max-width: 100%;
+    }
+    #package .packages{
+        grid-template-columns: 1fr;
+    }
+}

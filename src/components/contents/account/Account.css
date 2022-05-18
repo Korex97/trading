@@ -1,0 +1,52 @@
+.accounts{
+    width: 100%;
+    padding: 5rem;
+    background-color: var(--bg-color);
+}
+.create_account{
+    background-color: #7e3ff2;
+    border-radius: .5rem;
+    padding: 1rem;
+}
+.account_head{
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin: .5rem;
+    color: #ffffff;
+}
+.account_details{
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 3rem;
+    padding: .5rem;
+}
+.account_details p{
+    font-size: 1rem;
+}
+.account_details
+.btn{
+    width: 60%;
+    font-size: 1rem;
+    color: #212121;
+    background-color: #FAFAFA;
+    border: 1px solid #ffffff;
+    border-radius: .3rem .3rem .3rem 0;
+}
+@media screen  and (max-width: 600px){
+    .accounts{
+        padding: 3rem 1.2rem;
+    }
+    .account_head{
+        font-size: 1.5rem;
+        margin-left: .2rem;
+        margin-right: .5rem;
+    }
+    .account_details{
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    .account_details
+    .btn{
+        padding: .5rem;
+    }
+}

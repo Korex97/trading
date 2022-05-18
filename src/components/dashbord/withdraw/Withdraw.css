@@ -1,0 +1,102 @@
+#withdraw{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+#withdraw .user-acnt.money-card{
+    min-width: 35%;
+    max-width: 35%;
+}
+#withdraw p{
+    margin: 1.5rem;
+    font-size: 1.2rem;
+    color: var(--primary);
+}
+.withraw-type{
+    margin: 0 2rem;
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+}
+.withraw-type .types{
+    background-color: #ffffff;
+    color: #000000;
+    padding: 1.2rem;
+    border: 1px solid #ffffff;
+    width: max-content;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+.withraw-type .types:hover{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.types-active{
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#bank-form, #crypto-form{
+    background-color: #ffffff;
+    padding: 1.2rem;
+    border: 1px solid #ffffff;
+    border-radius: 1rem;
+    margin: 2rem;
+    width: 60%;
+}
+
+#crypto-form label{
+    color: var(--color-bg);
+    font-size: 1.2rem;
+}
+
+#crypto-form, #bank-form{
+    display: none;
+}
+#bank-form p{
+    color: var(--danger);
+    font-size: 1.5rem;
+}
+#crypto-form.form__active ,#bank-form.form__active{
+    display: block;
+}
+
+
+@media screen and (max-width: 1024px) {
+    #withdraw .user-acnt.money-card{
+        min-width: 70%;
+        max-width: 100%;
+    }
+    #bank-form, #crypto-form{
+        margin: 1rem .3rem;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #withdraw .user-acnt.money-card{
+        min-width: 100%;
+        max-width: 100%;
+    }
+    .withraw-type{
+        margin-left: 0;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+    }
+    .withraw-type .types{
+        width: 80%;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+    #bank-form, #crypto-form{
+        margin: 1rem .3rem;
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    #withdraw .user-acnt.money-card{
+        padding: 0 .2rem;
+    }
+}

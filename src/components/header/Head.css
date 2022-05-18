@@ -1,0 +1,140 @@
+.top{
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 2fr;
+    border: 1px light #311B92;
+    gap: 2rem;
+    /* background-color: #bbdefb; */
+    background-color: white;
+    outline: 2px solid #bbdefb;
+    position: static;
+    z-index: 1;
+}
+#menu{
+    display: none;
+}
+.close{
+    display: none;
+}
+.top .head{
+    margin-top: 1.2rem;
+}
+.top div h2 a{
+    color: #311B92;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-left: 10%;
+}
+.top .nav{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.top .nav ul{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    font-size: 1.5rem;
+}
+.top .nav ul li a{
+    color: #311B92;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+.top .nav .btns{
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    justify-content: center;
+    margin-bottom: 1.2rem;
+}
+.top .nav .btns .btn{
+    background-color: #3700b3;
+    font-size: 1rem;
+    border: 1px solid #3700b3;
+    border-radius: .7rem 0 .7rem 0;
+    width: 30%;
+}
+.top .nav .btns .btn:hover{
+    cursor: pointer;
+}
+.top .nav .btns .btn a{
+    color: #ffffff;
+}
+
+@media screen  and (max-width: 1024px){
+    .top{
+        grid-template-columns: 1fr 1fr;
+    }
+    .top .head{
+        margin-top: .3rem;
+        margin-left: 1rem;
+    }
+    #navs.nav{
+        display: none;
+    }
+    .top div h2 a{
+        font-size: 1.2rem;
+        font-weight: normal;
+    }
+    .top .nav ul li a{
+        font-weight: normal;
+        font-size: 1.2rem;
+    } 
+    #menu.menu{
+        display: flex;
+        font-size: 1rem;
+        color: #000000;
+        justify-self: right;
+        margin: 1rem;
+        margin-right: 1.5rem;
+    }
+    #menu.menu.off{
+        display: none;
+    }
+    .close{
+        display: flex;
+        margin-top: 1.5rem;
+        color: var(--primary-color);
+        font-size: 2rem;
+    }
+    .close:hover{
+        color: var(--primary-color);
+    }
+    #navs.nav.show{
+        width: 70%;
+        background-color: var(--color-bg);
+        height: 70%;
+        display: flex;
+        justify-self: right;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        z-index: 1;
+    }
+    .top .nav ul{
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .top .nav .btns{
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .top .nav .btns .btn{
+        width: 100%;
+    }
+}
+
+@media screen  and (max-width: 600px){
+    .top div h2 a{
+        font-size: 1rem;
+        font-weight: normal;
+    }
+    .top .nav ul li a{
+        font-weight: normal;
+        font-size: 1rem;
+    }
+    #navs.nav.show{
+        height: 100%;;
+    }
+}
