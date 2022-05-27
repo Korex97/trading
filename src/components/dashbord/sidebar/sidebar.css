@@ -200,3 +200,17 @@ a.article, a.article:hover {
         margin-right: 0;
     }
 }
+
+@media screen and (max-width: 350px) {
+    .navbar>.container, .navbar>.container-fluid{
+        justify-content: space-around;
+        flex-wrap: nowrap;
+    }
+    .container{
+        padding-left: .2rem;
+        flex-wrap: nowrap;
+    }
+    .navbar-header{
+        gap: .8rem;
+    }
+}

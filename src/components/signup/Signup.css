@@ -1,3 +1,9 @@
 .signup span{
     color: var(--blue);
 }
+
+@media screen and (max-width: 600px) {
+    .login.register{
+        margin: 15% 4%;
+    }
+}

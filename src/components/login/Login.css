@@ -38,14 +38,14 @@
 
 @media screen and (max-width: 1024px) {
     .login{
-        margin: 8% 12%;
+        margin: 15% 20%;
         padding: 1rem;
     }
 }
 
 @media screen and (max-width: 600px) {
     .login{
-        margin: 8% 3%;
+        margin: 30% 4%;
         padding: 1rem;
     }
     .login .error{

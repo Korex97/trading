@@ -77,9 +77,28 @@
     padding: 0.4rem;
     text-align: right;
 }
+
+@media screen  and (max-width: 1024px){
+    .coins{
+        grid-template-columns: 1fr 1fr;
+        padding: 2rem 2rem;
+    }
+}
+
 @media screen  and (max-width: 600px){
     .coins{
         grid-template-columns: 1fr;
         padding: 2rem 2rem;
+    }
+}
+
+@media screen  and (max-width: 450px){
+    .coins{
+        grid-template-columns: 1fr;
+        padding: 2rem 1.3rem;
+    }
+    .coins .market_details{
+        margin: 0;
+        font-size: .7rem;
     }
 }

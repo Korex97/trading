@@ -49,7 +49,13 @@
 
 /* medium devices */
 @media screen  and (max-width: 1024px){
-    
+    .head_section{
+        padding: 4rem 2rem;
+        gap: 2rem;
+    }
+    .head_image{
+        margin-left: 1rem;
+    }
 }
 
 /* small devices */

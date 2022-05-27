@@ -65,10 +65,11 @@
 @media screen  and (max-width: 1024px){
     .top{
         grid-template-columns: 1fr 1fr;
+        gap: .5rem;
     }
     .top .head{
         margin-top: .3rem;
-        margin-left: 1rem;
+        margin-left: .5rem;
     }
     #navs.nav{
         display: none;
@@ -80,6 +81,7 @@
     .top .nav ul li a{
         font-weight: normal;
         font-size: 1.2rem;
+        color: #ffffff;
     } 
     #menu.menu{
         display: flex;
@@ -129,6 +131,7 @@
     .top div h2 a{
         font-size: 1rem;
         font-weight: normal;
+        margin-left: 5%;
     }
     .top .nav ul li a{
         font-weight: normal;

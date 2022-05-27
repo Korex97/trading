@@ -65,6 +65,14 @@ hr{
 .card_btn:hover{
     box-shadow: 0 0 1px 0 #3700b3;
 }
+
+@media screen  and (max-width: 1024px){
+    .price_cards{
+        grid-template-columns: 1fr 1fr;
+        padding-left: .5rem;
+        padding-right: .5rem;
+    }
+}
 @media screen  and (max-width: 600px){
     .price_cards{
         grid-template-columns: 1fr;

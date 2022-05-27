@@ -16,7 +16,7 @@ const Signup = () => {
   return (
     <>
         <div>
-            <div className="login">
+            <div className="login register">
                <h3>Sign Up</h3>
                 
                 {

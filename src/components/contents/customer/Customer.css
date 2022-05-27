@@ -41,6 +41,13 @@
     font-size: 1rem;
     font-style: italic;
 } 
+
+@media screen and (max-width: 1024px) {
+    .customer .customer_body .image{
+        margin-left: 20%;
+    }
+}
+
 @media screen  and (max-width: 600px){
     .customer .customer_body{
         grid-template-columns: 1fr;
