@@ -1,9 +1,37 @@
 .signup span{
     color: var(--blue);
 }
+#passDetails{
+    display: none;
+}
+#passDetails.requirements{
+    margin: 1rem;
+    padding: .5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+.requirements div{
+    color: red;
+    width: fit-content;
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    justify-content: center;
+    align-content: center;
+}
+.requirements .green{
+    color: var(--green);
+}
+.react-tel-input .form-control{
+    width: 100%;
+}
 
 @media screen and (max-width: 600px) {
     .login.register{
         margin: 15% 4%;
+    }
+    .requirements{
+        margin: 0;
     }
 }

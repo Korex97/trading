@@ -1,28 +1,54 @@
 import "./Login.css";
-import { useEffect } from "react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { getToken, login, reset } from "../../app/actions/authSlice";
+import Error from "../error/Error";
+import Success from "../error/Success";
+
 
 
 const Login = () => {
-
+    const dispatch = useDispatch();
     const navigate = useNavigate();
-    const details = {
-        username: "admin@exmaple.com",
-        password: "haarkoredey"
-    }
-    
     const [email, setEmail] = useState("");
-    const [password, setPassword] = useState(""); 
+    const [password, setPassword] = useState("");
+    const [success_message, setMessage] = useState(""); 
     const [error, setError] = useState(""); 
 
+
+    const {user, isLoading, isError, isSuccess, message} = useSelector(state => state.auth);
+
+    useEffect(() => {
+        
+        if (isError){
+            setError(message)
+        }
+
+        if (user){
+            setMessage(user.message)
+        }else{
+            setMessage("")
+        }
+
+        if (isSuccess && user){
+            navigate("/user");
+        }
+
+        dispatch(reset())
+
+    }, [user, isError,  isSuccess, message, navigate, dispatch])
+
     const handleSubmit = () => {
-        // if (email !== details.username || password !== details.password){
-        //     setError("Invalid username or password")
-        // }else{
-        //     navigate("/user/");
-        // }
-        navigate("/user/")
+        if (email.length === 0 || password.length === 0 ){
+            setError("Please Enter your Login Details");
+        }else{
+            const credentials = {
+                username: email,
+                password: password,
+            }
+            dispatch(login(credentials))
+        }
     }
 
   return (
@@ -30,26 +56,30 @@ const Login = () => {
         <div>
             <div className="login">
                <h3>Sign In</h3>
+               {
+                   success_message === "" ? (
+                       <></>
+                   ) : (
+                        <Success message={`${success_message}, Kindly Login`} />
+                   )
+               }
                 
                 {
                     error === "" ? (
                         <></>
                     ):(
-                        <div className="error">
-                            <div className="message">
-                                Invalid Username or Password
-                            </div>
-                        </div>
+                        <Error error={error} />
                     )
                 }
 
-               <form action="" onSubmit={handleSubmit}>
+               <form action="" onSubmit={(e) => {
+                   e.preventDefault();
+                   handleSubmit();
+               }}>
                     <div className="form-group">
                         <label htmlFor="email">Email:</label>
                         <input  
                             onChange={(e) => setEmail(e.target.value)}
-                            name={"email"}
-                            value= {email}
                             type="text/email" className="form-control" 
                             id="usdtAddress" aria-describedby="usdtHelp"
                             placeholder="Enter Your Email or Username"
@@ -60,7 +90,6 @@ const Login = () => {
                         <label htmlFor="password">Password:</label>
                         <input  
                             onChange={(e) => setPassword(e.target.value)}
-                            name={password}
                             type="password" className="form-control" 
                             id="password" aria-describedby="password"
                             placeholder="Enter Your Password"
@@ -68,7 +97,21 @@ const Login = () => {
                     </div>
 
                     <div className="form-group">
-                        <button type="submit" className="btn btn-primary">Login</button>
+                        {
+                            isLoading ? (
+                                <button disabled className="btn btn-primary">
+                                    <span 
+                                        className="spin spinner-border spinner-border-sm" 
+                                        role={"status"} aria-hidden="true" /> Authenticating...
+                                    </button>
+                            ): (
+                                <button type="submit" className="btn btn-primary">
+                                    Login
+                                </button>
+                            )
+                        }
+                        
+                        
                     </div>
 
                     <div className="forgot">

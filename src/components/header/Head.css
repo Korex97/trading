@@ -36,7 +36,7 @@
     gap: 2rem;
     font-size: 1.5rem;
 }
-.top .nav ul li a{
+.top .nav ul li{
     color: #311B92;
     font-size: 1.5rem;
     font-weight: 400;
@@ -50,6 +50,7 @@
 }
 .top .nav .btns .btn{
     background-color: #3700b3;
+    color: #ffffff;
     font-size: 1rem;
     border: 1px solid #3700b3;
     border-radius: .7rem 0 .7rem 0;
@@ -57,9 +58,6 @@
 }
 .top .nav .btns .btn:hover{
     cursor: pointer;
-}
-.top .nav .btns .btn a{
-    color: #ffffff;
 }
 
 @media screen  and (max-width: 1024px){
@@ -78,7 +76,7 @@
         font-size: 1.2rem;
         font-weight: normal;
     }
-    .top .nav ul li a{
+    .top .nav ul li {
         font-weight: normal;
         font-size: 1.2rem;
         color: #ffffff;
@@ -133,7 +131,7 @@
         font-weight: normal;
         margin-left: 5%;
     }
-    .top .nav ul li a{
+    .top .nav ul li{
         font-weight: normal;
         font-size: 1rem;
     }

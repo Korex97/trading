@@ -1,4 +1,5 @@
 import './App.css';
+import { connect } from "react-redux";
 import Footers from './components/footer/Footer';
 import Contents from './components/contents/Contents';
 import Login from "./components/login/Login.jsx"
@@ -24,4 +25,4 @@ function App() {
   );
 }
 
-export default App;
+export default connect() (App);
