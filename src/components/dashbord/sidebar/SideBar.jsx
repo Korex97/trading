@@ -25,17 +25,6 @@ const SideBar = () => {
 
     const [userDetails, setUserDetails] = useState(null);
     const {user, isLoading, isError, isSuccess} = useSelector(state => state.auth);
-    
-    const details = {
-        detail: [
-            {
-                msg: "Hello User"
-            },
-            {
-                msg: "Fuck you"
-            }
-        ]
-    } 
 
 
     useEffect(() => {
@@ -67,7 +56,7 @@ const SideBar = () => {
             {/* <!-- Sidebar Holder --> */}
             <nav ref={ref} id="sidebar">
                 <div className="sidebar-header">
-                    <h3>UserName</h3>
+                    <h3>{getuserName()}</h3>
                 </div>
 
                 <ul className="list-unstyled components">
