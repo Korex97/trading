@@ -4,8 +4,10 @@ import Title from 'antd/lib/typography/Title';
 import Button from "@mui/material/Button";
 import "./HeadSection.css"
 import ForexImage from "../../../assets/b9158Babout.jpg";
+import { useNavigate } from 'react-router-dom';
 
 const HeadSection = () => {
+    const navigate = useNavigate();
   return (
     <>
         <div className='head_section'>
@@ -20,7 +22,7 @@ const HeadSection = () => {
                     </div>
 
                     <div className='btn'>
-                        <Button variant="contained">Create an Account</Button>
+                        <Button onClick = {(e) => navigate("/signup")} variant="contained">Create an Account</Button>
                     </div>
                 </Stack>
             </div>

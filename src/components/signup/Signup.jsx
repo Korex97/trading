@@ -38,29 +38,6 @@ const Signup = () => {
 
     }, [user, isSuccess, isError, message, navigate, dispatch]);
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (password !== confirmPassword){
-            setError("Password Does not match");
-        }
-        if (first_name.length === 0  || last_name.length === 0 || other_name.length === 0 ||
-            email.length === 0 || password.length === 0){
-                setError("One or More Fields is Empty");
-        }
-        else{
-            const user = {
-                first_name,
-                last_name,
-                other_name,
-                email,
-                password,
-                date_of_birth: date.format("YYYY-MM-DD"),
-                phone_number: phone_number.toString()
-            }
-            dispatch(register(user))
-        }   
-        
-    }
     const showRequirements = (id) => {
         const element = document.getElementById(id);
         element.classList.add("requirements")
@@ -81,6 +58,68 @@ const Signup = () => {
         if (pass.length >= 8)  output.long = true 
         
         return output
+    }
+    const passGoodCheck = () => {
+        const result = checkPassword(password);
+
+        // Check for length
+        if (result.long) {
+            document.getElementById("length").classList.add("green")
+        }else{
+            document.getElementById("length").classList.remove("green")
+        }
+        // Check for Number
+        if (result.number) {
+            document.getElementById("number").classList.add("green")
+        }else{
+            document.getElementById("number").classList.remove("green")
+        }
+        // Check for upper case
+        if (result.upper) {
+            document.getElementById("upper").classList.add("green")
+        }else{
+            document.getElementById("upper").classList.remove("green")
+        }
+
+        // Check for lower case
+        if (result.lower) {
+            document.getElementById("lower").classList.add("green")
+        }else{
+            document.getElementById("lower").classList.remove("green")
+        }
+
+        var passIsGood = false
+        if (result.upper && result.lower && result.long && result.number) passIsGood = true;
+        
+        return passIsGood;
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const passCheck = passGoodCheck();
+        if (password !== confirmPassword){
+            setError("Password Does not match");
+        }
+        if (first_name.length === 0  || last_name.length === 0 || other_name.length === 0 ||
+            email.length === 0 || password.length === 0){
+                setError("One or More Fields is Empty");
+        }
+        if ( !passCheck ){
+            setError("Password doesn't meet requirements")
+        }
+        else{
+            const user = {
+                first_name,
+                last_name,
+                other_name,
+                email,
+                password,
+                date_of_birth: date.format("YYYY-MM-DD"),
+                phone_number: phone_number.toString()
+            }
+            dispatch(register(user))
+        }   
+        
     }
   return (
     <>
@@ -169,12 +208,7 @@ const Signup = () => {
                             }} 
                             onChange={(e) => {
                                 setPassword(e.target.value);
-                                const result = checkPassword(password);
-                                if (result.upper){
-                                    document.getElementById("upper").classList.add("green")
-                                }else{
-                                    document.getElementById("upper").classList.remove("green")
-                                }
+                                passGoodCheck();
                             }}
                             name={password}
                             type="password" className="form-control" 
@@ -215,7 +249,7 @@ const Signup = () => {
                     <div className="form-group">
                         {
                             isLoading ? (
-                                <button className="btn btn-primary">
+                                <button className="btn btn-primary" disabled>
                                     <span 
                                         className="spin spinner-border spinner-border-sm" 
                                         role={"status"} aria-hidden="true" />Creating...
