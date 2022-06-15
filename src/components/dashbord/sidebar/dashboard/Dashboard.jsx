@@ -1,5 +1,9 @@
 import "./Dashboard.css";
 import { BsArrowRight } from "react-icons/bs";
+import FundAccount from "./modals/FundAccount";
+import { useState } from "react";
+import TransactionID from "./modals/TransactionID";
+
 
 const Dashboard = () => {
     const lotSize = 0.05;
@@ -40,14 +44,58 @@ const Dashboard = () => {
         const fullDate = date.toUTCString().split("GMT");
         return fullDate
     }
+
+    const [show, setShow] = useState(false);
+    const [showID, setShowID] = useState(false);
+    const [ID, setID] = useState(null);
+    const [amount, setAmount] = useState(null);
+    const [error, setError] = useState("");
+
+    const showFundingModal = () => {
+        setShow(true)
+    }
+    const hideModal = () => {
+        setShow(false)
+    }
+    const inputChange = (e) => {
+        if (show){
+            setAmount(e.target.value)
+        }
+        if (showID){
+            setID(e.target.value);
+        }
+        
+    }
+    const sendConfirmation = (e) => {
+       e.preventDefault();
+       
+       if (amount && show){
+           hideModal();
+           setShowID(true);
+           setError("");
+       }
+
+       if (amount === null && show){
+           setError("Kindly Input Amount");
+       }
+
+       if (ID && showID){
+           alert("Account Successfully Funded");
+           setShowID(false);
+       }
+       if (ID === null && showID){
+        setError("Kindly Enter Transaction ID");
+       }
+
+    }
   return (
     <>
-        <section className='dash-section'>
+        <section id="dashboard" className='dash-section'>
             <div className="cards-section">
                 <div className="money-card">
                     <div className="card-head">
                         <span>{getDate()}</span>
-                        <button className="btn">Fund Your Wallet</button>
+                        <button className="btn" onClick={(e) => showFundingModal()} >Fund Your Wallet</button>
                     </div>
                     <div className="card-head balance">
                         <span>Available Balance: </span>
@@ -176,6 +224,20 @@ const Dashboard = () => {
                     </div>
                 </div>
             </div>
+            <FundAccount 
+                inputChange = {inputChange}
+                error={error} 
+                submitFunding= {sendConfirmation} 
+                onClose= {hideModal} 
+                show= { show } />
+            <TransactionID
+                onChange = {inputChange}
+                error = { error } 
+                submitID = {sendConfirmation}
+                show={showID} 
+                amount={amount}
+                onClose = {e => setShowID(false)} 
+                />
         </section>
     </>
   )

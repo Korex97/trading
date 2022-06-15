@@ -102,9 +102,9 @@
         color: var(--primary-color);
     }
     #navs.nav.show{
-        width: 70%;
+        width: 50%;
         background-color: var(--color-bg);
-        height: 70%;
+        height: 50rem;
         display: flex;
         justify-self: right;
         flex-direction: column;

@@ -25,6 +25,7 @@ const SideBar = () => {
 
     const [userDetails, setUserDetails] = useState(null);
     const {user, isLoading, isError, isSuccess} = useSelector(state => state.auth);
+    const [isAdmin, setIsAdmin] = useState(false);
 
 
     useEffect(() => {
@@ -34,6 +35,9 @@ const SideBar = () => {
         }
         if (isSuccess && user){
             setUserDetails(user)
+            if (user.is_admin) {
+                setIsAdmin(true);
+            }
         } 
     }, [user, isError, isSuccess,  dispatch, navigate])
 
@@ -49,7 +53,8 @@ const SideBar = () => {
     const getuserName = () => {
         const username = (userDetails) ? userDetails.first_name : "";
         return username;
-    } 
+    }
+    
   return (
     <>
        <div className="wrapper">
@@ -59,23 +64,43 @@ const SideBar = () => {
                     <h3>{getuserName()}</h3>
                 </div>
 
-                <ul className="list-unstyled components">
-                    <li className="active">
-                        <a href="/user" aria-expanded="false">Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="/user/packages">Packages</a>
-                    </li>
-                    <li>
-                        <a href="/user/withdraw">Withdrawal</a>
-                    </li>
-                    <li>
-                        <a href="/user/referral">Downlines</a>
-                    </li>
-                    <li>
-                        <a href="#">Settings</a>
-                    </li>
-                </ul>
+                {
+                    (isAdmin) ? (
+                        <ul className="list-unstyled components">
+                            <li className="active">
+                                <a href="/user" aria-expanded="false">Dashboard</a>
+                            </li>
+                            
+                            <li>
+                                <a href="/user/packages">Users</a>
+                            </li>
+                            <li>
+                                <a href="/user/withdraw">Deposits</a>
+                            </li>
+                            <li>
+                                <a href="/user/referral">Withdrawals</a>
+                            </li>
+                        </ul>
+                    ) : (
+                        <ul className="list-unstyled components">
+                            <li className="active">
+                                <a href="/user" aria-expanded="false">Dashboard</a>
+                            </li>
+                            <li>
+                                <a href="/user/packages">Packages</a>
+                            </li>
+                            <li>
+                                <a href="/user/withdraw">Withdrawal</a>
+                            </li>
+                            <li>
+                                <a href="/user/referral">Downlines</a>
+                            </li>
+                            <li>
+                                <a href="#">Profile</a>
+                            </li>
+                        </ul>
+                    ) 
+                }
             </nav>
 
             <div id="content">

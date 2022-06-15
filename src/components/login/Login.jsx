@@ -2,7 +2,7 @@ import "./Login.css";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { getToken, login, reset } from "../../app/actions/authSlice";
+import {  login, reset } from "../../app/actions/authSlice";
 import Error from "../error/Error";
 import Success from "../error/Success";
 
@@ -72,7 +72,7 @@ const Login = () => {
                     )
                 }
 
-               <form action="" onSubmit={(e) => {
+               <form onSubmit={(e) => {
                    e.preventDefault();
                    handleSubmit();
                }}>
