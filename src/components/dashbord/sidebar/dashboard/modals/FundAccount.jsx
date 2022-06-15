@@ -34,7 +34,7 @@ const FundAccount = props => {
                             }
                             
                             <div className="form-group">
-                                <label htmlFor="funds">Enter Amount:</label>
+                                <label htmlFor="funds">Enter Amount in $:</label>
                                 <input type="number"
                                     onChange={props.inputChange}
                                     className='form-control'

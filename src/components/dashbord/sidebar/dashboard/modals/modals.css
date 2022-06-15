@@ -14,6 +14,9 @@
    background-color: var(--color-bg);
    border-radius: 1rem;
 }
+.modal-content.success{
+    padding: 1.5rem;
+}
 .modal-header{
     padding: 10px;
     align-items: center;
@@ -31,6 +34,19 @@
     padding: 1rem;
     border-top: 1px solid var(--color-bg);
     border-bottom: 1px solid var(--color-bg);
+}
+.modal-body .icon{
+    margin-left: 25%;
+    font-size: 10rem;
+    color: var(--success);   
+}
+.modal-body .closeModal{
+    display: flex;
+    margin: 1rem;
+}
+.modal-body .btn{
+    justify-content: center;
+    align-items: center;
 }
 .form-image{
     margin: 0 30%;
@@ -57,5 +73,15 @@ form .error .message{
     .modal{
         margin-left: .7rem;
         margin-right: .7rem;
+    }
+    .modal-content.success{
+        padding: .5rem;
+    }
+    
+    .modal-body .icon{
+        margin-left: 23%;   
+    }
+    .modal-body .text{
+        font-size: .7rem;
     }
 }

@@ -3,6 +3,8 @@ import { BsArrowRight } from "react-icons/bs";
 import FundAccount from "./modals/FundAccount";
 import { useState } from "react";
 import TransactionID from "./modals/TransactionID";
+import SuccessModal from "./modals/SuccessModal";
+
 
 
 const Dashboard = () => {
@@ -47,6 +49,7 @@ const Dashboard = () => {
 
     const [show, setShow] = useState(false);
     const [showID, setShowID] = useState(false);
+    const [showSuccess, setShowSuccess] = useState(false);
     const [ID, setID] = useState(null);
     const [amount, setAmount] = useState(null);
     const [error, setError] = useState("");
@@ -80,8 +83,8 @@ const Dashboard = () => {
        }
 
        if (ID && showID){
-           alert("Account Successfully Funded");
            setShowID(false);
+           setShowSuccess(true);
        }
        if (ID === null && showID){
         setError("Kindly Enter Transaction ID");
@@ -238,6 +241,11 @@ const Dashboard = () => {
                 amount={amount}
                 onClose = {e => setShowID(false)} 
                 />
+            <SuccessModal 
+                showSuccess= {showSuccess}
+                amount = {amount}
+                onClose = {e => setShowSuccess(false)}
+            />
         </section>
     </>
   )
