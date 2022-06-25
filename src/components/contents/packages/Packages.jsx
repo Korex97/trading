@@ -2,6 +2,7 @@ import { Stack } from "@mui/material";
 import Title from "antd/lib/typography/Title";
 import { BsCheckCircleFill } from "react-icons/bs"
 import "./Packages.css";
+import { packages } from "../../../info";
 
 const Packages = () => {
   return (
@@ -16,200 +17,40 @@ const Packages = () => {
 
             <div className="price_cards">
 
-                <div className="card">
-                    <Stack spacing={2}>
-                        <div className="card_head">
-                            <h3>VIP1</h3>
-                        </div>
+                {
+                    packages.map((item) => {
+                        return (
+                            <div key={item.id} className="card">
+                                <Stack spacing={2}>
+                                    <div className="card_head">
+                                        <h5>{item.name}</h5>
+                                    </div>
 
-                        <h3 className="card_price">$ 30</h3>
-                        <p className="duration">1 Days</p>
+                                    <h3 className="card_price">$ {item.price}</h3>
+                                    <p className="duration">{item.duration}</p>
 
-                        <hr />
-                    </Stack>
+                                    <hr />
+                                </Stack>
 
-                    <Stack className="features" spacing={1}>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                    </Stack>
+                                <Stack className="features" spacing={1}>
+                                    {
+                                        item.features.map((feature) => {
+                                            return (
+                                                <div key={feature}>
+                                                    <BsCheckCircleFill />
+                                                    <span>{feature}</span>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </Stack>
 
-                    <button className="card_btn">Buy now</button>
+                                <button className="card_btn">Buy now</button>
 
-                </div>
-
-                <div className="card">
-                    <Stack spacing={2}>
-                        <div className="card_head">
-                            <h3>VIP1</h3>
-                        </div>
-
-                        <h3 className="card_price">$ 30</h3>
-                        <p className="duration">1 Days</p>
-
-                        <hr />
-                    </Stack>
-
-                    <Stack className="features" spacing={1}>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                    </Stack>
-
-                    <button className="card_btn">Buy now</button>
-
-                </div>
-
-                <div className="card">
-                    <Stack spacing={2}>
-                        <div className="card_head">
-                            <h3>VIP1</h3>
-                        </div>
-
-                        <h3 className="card_price">$ 30</h3>
-                        <p className="duration">1 Days</p>
-
-                        <hr />
-                    </Stack>
-
-                    <Stack className="features" spacing={1}>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                    </Stack>
-
-                    <button className="card_btn">Buy now</button>
-
-                </div>
-
-                <div className="card">
-                    <Stack spacing={2}>
-                        <div className="card_head">
-                            <h3>VIP1</h3>
-                        </div>
-
-                        <h3 className="card_price">$ 30</h3>
-                        <p className="duration">1 Days</p>
-
-                        <hr />
-                    </Stack>
-
-                    <Stack className="features" spacing={1}>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                    </Stack>
-
-                    <button className="card_btn">Buy now</button>
-
-                </div>
-
-                <div className="card">
-                    <Stack spacing={2}>
-                        <div className="card_head">
-                            <h3>VIP1</h3>
-                        </div>
-
-                        <h3 className="card_price">$ 30</h3>
-                        <p className="duration">1 Days</p>
-
-                        <hr />
-                    </Stack>
-
-                    <Stack className="features" spacing={1}>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                        <div>
-                            <BsCheckCircleFill />
-                            <span>Min. Possible deposit: $30</span>
-                        </div>
-                    </Stack>
-
-                    <button className="card_btn">Buy now</button>
-
-                </div>
+                            </div>
+                        )
+                    })
+                }
 
             </div>
         </div>

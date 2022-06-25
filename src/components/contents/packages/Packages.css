@@ -26,7 +26,8 @@
 .price_cards .card .card_head{
     display: flex;
     justify-content: center;
-    width: 25%;
+    width: fit-content;
+    padding: .7rem;
     background-color: #80D8FF;
     border-radius: 3rem 4rem 4rem 0;
 }

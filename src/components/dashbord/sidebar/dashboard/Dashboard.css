@@ -63,6 +63,29 @@
     justify-content: space-between;
     font-weight: 400;
 }
+
+.money-card.package.no-package{
+    background-color: #D3D3D3;
+    gap: 0.3rem;
+}
+.money-card.package.no-package span{
+    text-align: center;
+    font-size: 1rem;
+    color: var(--danger);
+}
+.money-card .container{
+    display: flex;
+    justify-content: center;
+}
+.money-card .container .btn{
+    color: #fff;
+    background-color: #007bff;
+    border-color: #007bff;
+}
+.money-card .icon{
+    font-size: 4rem;
+    color: var(--danger);
+}
 .money-card.trades{
     display: flex;
     flex-direction: column;

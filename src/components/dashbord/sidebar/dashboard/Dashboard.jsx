@@ -4,15 +4,24 @@ import FundAccount from "./modals/FundAccount";
 import { useState } from "react";
 import TransactionID from "./modals/TransactionID";
 import SuccessModal from "./modals/SuccessModal";
+import { AiOutlineWarning } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import { trackPromise, usePromiseTracker } from "react-promise-tracker";
+import emailjs from "emailjs-com";
 
 
 
-const Dashboard = () => {
+
+const Dashboard = (props) => {
+    const navigate = useNavigate();
     const lotSize = 0.05;
     const action = {
         1: "buy",
         2: "sell"
     }
+    const username = props.username;
+    const platform = "Capstone Investment";
+    const promiseInProgress = usePromiseTracker();
     const users = [
         {
             id: 1,
@@ -53,12 +62,14 @@ const Dashboard = () => {
     const [ID, setID] = useState(null);
     const [amount, setAmount] = useState(null);
     const [error, setError] = useState("");
+    const [showLoading, setShowLoading] = useState(false);
 
     const showFundingModal = () => {
         setShow(true)
     }
     const hideModal = () => {
         setShow(false)
+        setError("");
     }
     const inputChange = (e) => {
         if (show){
@@ -83,8 +94,21 @@ const Dashboard = () => {
        }
 
        if (ID && showID){
-           setShowID(false);
-           setShowSuccess(true);
+        const template = {
+            platform,
+            username,
+            amount: `$ ${amount}`,
+            transaction_id: ID
+        }
+        trackPromise(emailjs.send("service_0hpc3us","template_ulmlwa7", template, "ns7zrfII77b1xyiSS"));
+        if (promiseInProgress === true){
+            setShowLoading(true);
+        }else{
+            setShowID(false);
+            setShowSuccess(true);
+        }
+        
+           
        }
        if (ID === null && showID){
         setError("Kindly Enter Transaction ID");
@@ -106,7 +130,7 @@ const Dashboard = () => {
                     </div>
                 </div>
 
-                <div className="money-card package">
+                {/* <div className="money-card package">
                     <div className="name">
                         <div>Plan: {"Gold Package"}</div>
                         <div className="btn">Duration: {"30 Days Plan"}</div>
@@ -122,6 +146,17 @@ const Dashboard = () => {
                             <span>$1000</span>
                         </div>
                     </div>
+                </div> */}
+
+                <div className="money-card package no-package">
+                    <div className="container">
+                        <AiOutlineWarning className="icon" />
+                    </div>
+                    <span>You do not have a current Package</span>
+                    <div className="container">
+                        <button onClick={e => navigate("/user/packages")} className="btn btn-primary">Buy a Package</button>
+                    </div>
+
                 </div>
 
                 <div className="money-card trades">
@@ -239,12 +274,19 @@ const Dashboard = () => {
                 submitID = {sendConfirmation}
                 show={showID} 
                 amount={amount}
-                onClose = {e => setShowID(false)} 
-                />
+                onClose = {e => {
+                    setShowID(false)
+                    setError("")
+                }}
+                showLoading= {showLoading} 
+            />
             <SuccessModal 
                 showSuccess= {showSuccess}
                 amount = {amount}
-                onClose = {e => setShowSuccess(false)}
+                onClose = {e => {
+                    setShowSuccess(false);
+                    setError("")
+                }}
             />
         </section>
     </>
