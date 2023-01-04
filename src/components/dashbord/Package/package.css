@@ -20,10 +20,29 @@
     margin-left: 0;
     font-size: 1.2rem;
 }
-#package .packages .money-card .card-head{
+#package .money-card.package.no-package{
+    background-color: #D3D3D3;
+    gap: 0.3rem;
+}
+#package .money-card.package.no-package span{
+    text-align: center;
+    font-size: 1rem;
+    color: var(--danger);
+}
+#package .money-card .icon_container{
     display: flex;
     justify-content: center;
-    width: 25%;
+}
+#package .money-card .icon{
+    font-size: 4rem;
+    color: var(--danger);
+}
+
+#package .packages .money-card .card_head{
+    display: flex;
+    justify-content: center;
+    width: fit-content;
+    padding: .7rem;
     background-color: #80D8FF;
     border-radius: 3rem 4rem 4rem 0;
 }

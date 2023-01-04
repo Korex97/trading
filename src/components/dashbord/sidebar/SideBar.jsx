@@ -1,12 +1,10 @@
 import React, { useEffect, useRef } from 'react';
-import { BiUser } from "react-icons/bi";
-import { GoPackage } from "react-icons/go";
 import { RiMenu2Fill } from "react-icons/ri";
 import { IoNotificationsOutline } from "react-icons/io5";
 import { FaRegUserCircle } from 'react-icons/fa';
 import "./sidebar.css";
 import Dashboard from './dashboard/Dashboard';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useLocation, useNavigate } from 'react-router-dom';
 import Package from '../Package/Package';
 import Withdraw from '../withdraw/Withdraw';
 import Downlines from '../downlines/Downlines';
@@ -14,6 +12,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from '../../../app/actions/authSlice';
 import { useState } from 'react';
 import { useLayoutEffect } from 'react';
+import Home from "../admin/Home/Home";
+import Loading from '../../loading/Loading';
 
 
 
@@ -21,7 +21,10 @@ const SideBar = () => {
     const ref = useRef(null);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
+    const location = useLocation();
+    const { pathname } = location;
+    const splitLocation = pathname.split("/");
+    const lastelement = splitLocation.length - 1
 
     const [userDetails, setUserDetails] = useState(null);
     const {user, isLoading, isError, isSuccess} = useSelector(state => state.auth);
@@ -46,7 +49,6 @@ const SideBar = () => {
     }, [dispatch]) 
 
     const toggleSidebar = (e) => {
-        // ref.current.classList.toggle("active");
         const element = document.getElementById("sidebar")
         element.classList.toggle("active");
     }
@@ -54,6 +56,7 @@ const SideBar = () => {
         const username = (userDetails) ? userDetails.first_name : "";
         return username;
     }
+    const username = (userDetails) ? `${userDetails.first_name} ${userDetails.last_name}` : "";
     
   return (
     <>
@@ -68,11 +71,11 @@ const SideBar = () => {
                     (isAdmin) ? (
                         <ul className="list-unstyled components">
                             <li className="active">
-                                <a href="/user" aria-expanded="false">Dashboard</a>
+                                <span onClick={e => navigate("/user")} aria-expanded="false">Dashboard</span>
                             </li>
                             
                             <li>
-                                <a href="/user/packages">Users</a>
+                                <span onClick={e => navigate("/user/packages")} >Users</span>
                             </li>
                             <li>
                                 <a href="/user/withdraw">Deposits</a>
@@ -83,20 +86,20 @@ const SideBar = () => {
                         </ul>
                     ) : (
                         <ul className="list-unstyled components">
-                            <li className="active">
-                                <a href="/user" aria-expanded="false">Dashboard</a>
+                            <li className= { splitLocation[lastelement] === "user"? "active" : ""}>
+                                <span onClick={e => navigate("/user")} aria-expanded="false">Dashboard</span>
                             </li>
-                            <li>
-                                <a href="/user/packages">Packages</a>
+                            <li className={ splitLocation[lastelement] === "packages" ? "active" : ""}>
+                                <span onClick={e => navigate("/user/packages")} aria-expanded="false">Packages</span>
                             </li>
-                            <li>
-                                <a href="/user/withdraw">Withdrawal</a>
+                            <li className={ splitLocation[lastelement] === "withdraw" ? "active" : ""}>
+                                <span onClick={e => navigate("/user/withdraw")}>Withdrawal</span>
                             </li>
-                            <li>
-                                <a href="/user/referral">Downlines</a>
+                            <li className={ splitLocation[lastelement] === "referral" ? "active" : ""}>
+                                <span onClick={e => navigate("/user/referral")}>Downlines</span>
                             </li>
-                            <li>
-                                <a href="#">Profile</a>
+                            <li className={ splitLocation[lastelement] === "profile" ? "active" : ""}>
+                                <span onClick={e => navigate("/user/profile")}>Profile</span>
                             </li>
                         </ul>
                     ) 
@@ -110,7 +113,7 @@ const SideBar = () => {
 
                         <div className="navbar-header">
                             <RiMenu2Fill onClick={(e) => toggleSidebar(e)} className="menu glyphicon glyphicon-align-left" />
-                            <div>Hello {getuserName()}</div>
+                            <div> {getuserName() !== "" ? `Hello ${getuserName()}`: "" }</div>
                         </div>
 
                         <div className='user_ctr'>
@@ -121,12 +124,21 @@ const SideBar = () => {
                 </nav>
 
                 {/* Different section */}
-                <Routes>
-                    <Route path='/' element={<Dashboard />}/>
-                    <Route path='/packages' element={<Package />} />
-                    <Route path='/withdraw' element={<Withdraw />} />
-                    <Route path='/referral' element={<Downlines />} />
-                </Routes>
+                {
+                    
+                    isLoading ? (
+                            <Loading show={true} min_height={"80vh"} />
+                        ): (
+                            <Routes>
+                                <Route path='/' element={<Dashboard username={username} />}/>
+                                <Route path='/packages' element={<Package />} />
+                                <Route path='/withdraw' element={<Withdraw />} />
+                                <Route path='/referral' element={<Downlines />} />
+                                <Route path="/" element={<Home />} />
+                            </Routes>
+                        )
+                } 
+                
                 
             </div>
         </div>

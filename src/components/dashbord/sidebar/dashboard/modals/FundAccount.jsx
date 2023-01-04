@@ -44,15 +44,15 @@ const FundAccount = props => {
                             <div className="form-group">
                                 <label htmlFor="funds">Send to this USDT wallet</label>
                                 <input disabled type="text"
-                                    value={"0x9cc8a65daf6b033ee22581cd4cae1d34fbdb5ac6b"}
+                                    value={"TSgff1Ychd59SXGo5B99xVnxeeqxzhTTEz"}
                                     className='form-control'
                                     placeholder='Enter Desired Amount' />
-                                <small>above USDT addresss is a BEP20 address</small>
+                                <small>Above USDT addresss is a TRC20 address</small>
                             </div>
                             
                             <div className="form-group">
                                 <p>You can also scan QR code to send</p>
-                                <img className="form-image" src="https://cdn.bitkeep.vip/u_b_8bb403d0-a049-11ec-a3eb-f758fa002ae8.png" alt="QR code" />
+                                <img className="form-image" src="https://i.ibb.co/dWGnZDv/Photo-from-Resman.jpg" alt="QR code" />
                             </div>
 
                             <div className="form-group">

@@ -1,0 +1,109 @@
+#homeContainer{
+    padding: 1rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+}
+.performance{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2rem
+}
+.performance .card{
+    background-color: white;
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.2);
+    border-radius: 1rem;
+    padding: 1.5rem;
+    border: 2px solid white;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+.performance .card:hover{
+    background-color: var(--light);
+    border: 3px solid white;
+}
+.performance .card_details{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.performance .card_details .icon{
+    font-size: 3rem;
+    color: var(--red);
+}
+.performance .card_info{
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+}
+.performance .card_info .icon{
+    font-size: 1.5rem;
+    color: var(--gray);
+}
+.performance .card_info div{
+    font-size: .8rem;
+    color: gray;
+}
+.performance .card_details .info_details{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: .5rem;
+    text-align: center;
+}
+.performance .card_details .info_details h4{
+    font-size: 2rem;
+    font-weight: 400;
+}
+.performance .card_details .info_details h6{
+    font-size: 1rem;
+    font-weight: normal;
+}
+
+#homeContainer .users{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+}
+#homeContainer .users .users-list{
+    overflow: auto;
+    background-color: white;
+    box-shadow: 0 0 0 0 rgba(0,0,0,0.2);
+    border-radius: 1rem;
+    max-height: 400px;
+    padding: 1rem;
+    border: 2px solid white;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+#homeContainer .users .users-list h5{
+    text-align: center;
+}
+
+
+
+/* Media Query for Medium Devices */
+@media screen and (max-width: 1024px) {
+    .performance{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+/* Media Query for small Devics */
+@media screen and (max-width: 600px) {
+    #homeContainer{
+        padding: .5rem;
+        gap: 2rem;
+    }
+    .performance{
+        grid-template-columns: 1fr;
+    }
+    #homeContainer .users{
+        grid-template-columns: 1fr;
+    }
+}
